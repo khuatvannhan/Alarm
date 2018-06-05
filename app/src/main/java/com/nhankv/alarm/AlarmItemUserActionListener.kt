@@ -1,7 +1,7 @@
 package com.nhankv.alarm
 
 import android.view.View
-import com.nhankv.data.api.alarm.model.Alarm
+import com.nhankv.data.alarm.model.Alarm
 
 interface AlarmItemUserActionListener {
     fun onAlarmClicked(alarm: Alarm) {}

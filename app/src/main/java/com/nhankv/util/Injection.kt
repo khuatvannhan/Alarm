@@ -2,9 +2,9 @@ package com.nhankv.util
 
 import android.content.Context
 import android.support.annotation.NonNull
-import com.nhankv.data.api.alarm.AlarmsRepository
-import com.nhankv.data.api.alarm.local.AlarmsDataLocal
-import com.nhankv.data.api.alarm.remote.AlarmsDataRemote
+import com.nhankv.data.alarm.AlarmsRepository
+import com.nhankv.data.alarm.local.AlarmsDataLocal
+import com.nhankv.data.alarm.remote.AlarmsDataRemote
 
 class Injection {
     /*fun provideAlarmsRepository(@NonNull context: Context): AlarmsRepository {

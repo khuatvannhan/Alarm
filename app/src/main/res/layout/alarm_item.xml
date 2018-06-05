@@ -11,7 +11,7 @@
 
         <variable
             name="alarm"
-            type="com.nhankv.data.api.alarm.model.Alarm" />
+            type="com.nhankv.data.alarm.model.Alarm" />
 
         <variable
             name="listener"

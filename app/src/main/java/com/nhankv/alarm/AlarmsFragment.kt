@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.nhankv.alarm.databinding.FragmentAlarmBinding
-import com.nhankv.data.api.alarm.model.Alarm
+import com.nhankv.data.alarm.model.Alarm
 import com.nhankv.main.MainActivity
 
 

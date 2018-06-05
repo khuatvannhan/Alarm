@@ -3,7 +3,7 @@ package com.nhankv.alarm
 import android.support.annotation.NonNull
 import com.nhankv.base.BasePresenter
 import com.nhankv.base.BaseView
-import com.nhankv.data.api.alarm.model.Alarm
+import com.nhankv.data.alarm.model.Alarm
 
 interface AlarmContract {
 

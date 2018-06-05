@@ -1,9 +1,9 @@
-package com.nhankv.data.api.alarm
+package com.nhankv.data.alarm
 
 import android.support.annotation.NonNull
-import com.nhankv.data.api.alarm.model.Alarm
+import com.nhankv.data.alarm.model.Alarm
 
-interface AlarmsDataItf {
+interface AlarmsDataSource {
     interface LoadAlarmCallBack {
         fun onAlarmsLoaded(alarms: ArrayList<Alarm>)
 
@@ -32,9 +32,9 @@ interface AlarmsDataItf {
 
     fun clearCompleteAlarms()
 
-    fun refreshAlarms()
-
     fun deleteAllTasks()
 
     fun deleteTask(@NonNull id: String)
+
+    fun refreshAlarms(listAlarm: ArrayList<Alarm>)
 }

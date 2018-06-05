@@ -3,7 +3,7 @@ package com.nhankv
 import android.annotation.SuppressLint
 import android.app.Application
 import android.arch.lifecycle.ViewModelProvider
-import com.nhankv.data.api.alarm.AlarmsRepository
+import com.nhankv.data.alarm.AlarmsRepository
 import com.nhankv.util.Injection
 
 class ViewModelFactory private constructor(

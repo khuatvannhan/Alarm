@@ -1,6 +1,6 @@
 package com.nhankv.alarm
 
-import com.nhankv.data.api.alarm.model.Alarm
+import com.nhankv.data.alarm.model.Alarm
 
 class AlarmPresenter: AlarmContract.Presenter {
 

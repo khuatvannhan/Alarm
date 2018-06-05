@@ -1,4 +1,4 @@
-package com.nhankv.data.api.alarm.model
+package com.nhankv.data.alarm.model
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Embedded
@@ -21,11 +21,14 @@ class Alarm() : Parcelable, Serializable {
     @ColumnInfo(name = "label")
     private var mLabel: String = ""
 
-    @ColumnInfo(name = "label")
+    @ColumnInfo(name = "time")
     private var mTime: String = ""
 
-    @ColumnInfo(name = "label")
+    @ColumnInfo(name = "date")
     private var mDateMonth: String = ""
+
+    @ColumnInfo(name = "completed")
+    var isCompleted: Boolean = false
 
     @ColumnInfo(name = "selected")
     var isSelected: Boolean = false
@@ -53,6 +56,7 @@ class Alarm() : Parcelable, Serializable {
         mLabel = parcel.readString()
         mTime = parcel.readString()
         mDateMonth = parcel.readString()
+        isCompleted = parcel.readByte() != 0.toByte()
         isSelected = parcel.readByte() != 0.toByte()
         isState = parcel.readByte() != 0.toByte()
         isRepeat = parcel.readByte() != 0.toByte()
@@ -120,6 +124,7 @@ class Alarm() : Parcelable, Serializable {
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(mId)
         parcel.writeString(mLabel)
+        parcel.writeByte(if (isCompleted) 1 else 0)
         parcel.writeByte(if (isState) 1 else 0)
         parcel.writeByte(if (isSelected) 1 else 0)
         parcel.writeByte(if (isRepeat) 1 else 0)

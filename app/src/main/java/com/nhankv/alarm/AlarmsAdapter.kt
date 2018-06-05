@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.nhankv.alarm.databinding.AlarmItemBinding
-import com.nhankv.data.api.alarm.model.Alarm
+import com.nhankv.data.alarm.model.Alarm
 
 class AlarmsAdapter(private var mAlarms: List<Alarm>, private var mAlarmsViewModel: AlarmsViewModel)
     : BaseAdapter() {
