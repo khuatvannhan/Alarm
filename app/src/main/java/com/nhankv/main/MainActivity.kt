@@ -2,13 +2,14 @@ package com.nhankv.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
-import com.nhankv.alarm.AlarmPresenter
 import com.nhankv.alarm.R
+import com.nhankv.alarm.R.id.navigationTabBar
+import com.nhankv.alarm.R.id.viewPager
+import com.nhankv.util.ActivityUtils
 import devlight.io.library.ntb.NavigationTabBar
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var mAlarmPresenter: AlarmPresenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,15 +40,4 @@ class MainActivity : AppCompatActivity() {
     fun initViewPager() {
         viewPager.setAdapter(MainPagerAdapter(supportFragmentManager))
     }
-
-    /*fun init() {
-        var AlarmsFragment = supportFragmentManager.findFragmentById(R.id.contentFrame)
-        if (AlarmsFragment == null) {
-            // Create the fragment
-            AlarmsFragment = AlarmsFragment.newInstance()
-            ActivityUtils.addFragmentToActivity(supportFragmentManager, AlarmsFragment, R.id.contentFrame)
-        }
-        // Create the presenter
-        mAlarmPresenter = AlarmPresenter()
-    }*/
 }

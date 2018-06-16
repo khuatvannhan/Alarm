@@ -1,9 +1,7 @@
 package com.nhankv.data.alarm.model
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Embedded
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+import android.arch.persistence.room.*
+import android.databinding.adapters.Converters
 import android.os.Parcel
 import android.os.Parcelable
 
@@ -11,21 +9,26 @@ import com.google.gson.annotations.SerializedName
 
 import java.io.Serializable
 import java.util.ArrayList
+import android.arch.persistence.room.TypeConverters
+import com.nhankv.data.alarm.local.DataConverter
+
+//import com.nhankv.data.alarm.local.DataConverter
+
 
 @Entity(tableName = "alarms")
-class Alarm() : Parcelable, Serializable {
-    @PrimaryKey(autoGenerate = true)
+class Alarm {
+    @PrimaryKey
     @ColumnInfo(name = "id")
-    private var mId: String = ""
+    var mId: String = ""
 
     @ColumnInfo(name = "label")
-    private var mLabel: String = ""
+    var mLabel: String = ""
 
     @ColumnInfo(name = "time")
-    private var mTime: String = ""
+    var mTime: String = ""
 
     @ColumnInfo(name = "date")
-    private var mDateMonth: String = ""
+    var mDateMonth: String = ""
 
     @ColumnInfo(name = "completed")
     var isCompleted: Boolean = false
@@ -43,27 +46,14 @@ class Alarm() : Parcelable, Serializable {
     var isVibrate: Boolean = false
 
     @ColumnInfo(name = "time_alarm")
-    private var mTimeAlarm: Long = 0
+    var mTimeAlarm: Long = 0
 
     @ColumnInfo(name = "path_ringtone")
-    private var mPathRingTone: String? = null
+    var mPathRingTone: String? = null
 
-    @Embedded(prefix = "dayRepeat")
-    private var mDaysRepeat: ArrayList<DayRepeat>? = null
-
-    constructor(parcel: Parcel) : this() {
-        mId = parcel.readString()
-        mLabel = parcel.readString()
-        mTime = parcel.readString()
-        mDateMonth = parcel.readString()
-        isCompleted = parcel.readByte() != 0.toByte()
-        isSelected = parcel.readByte() != 0.toByte()
-        isState = parcel.readByte() != 0.toByte()
-        isRepeat = parcel.readByte() != 0.toByte()
-        isVibrate = parcel.readByte() != 0.toByte()
-        mTimeAlarm = parcel.readLong()
-        mPathRingTone = parcel.readString()
-    }
+    @TypeConverters(DataConverter::class)
+    @ColumnInfo(name = "day_repeat")
+    var mDaysRepeat: ArrayList<DayRepeat>? = null
 
     fun getmId(): String {
         return mId
@@ -119,31 +109,5 @@ class Alarm() : Parcelable, Serializable {
 
     fun setmDaysRepeat(mDaysRepeat: ArrayList<DayRepeat>) {
         this.mDaysRepeat = mDaysRepeat
-    }
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(mId)
-        parcel.writeString(mLabel)
-        parcel.writeByte(if (isCompleted) 1 else 0)
-        parcel.writeByte(if (isState) 1 else 0)
-        parcel.writeByte(if (isSelected) 1 else 0)
-        parcel.writeByte(if (isRepeat) 1 else 0)
-        parcel.writeByte(if (isVibrate) 1 else 0)
-        parcel.writeLong(mTimeAlarm)
-        parcel.writeString(mPathRingTone)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Alarm> {
-        override fun createFromParcel(parcel: Parcel): Alarm {
-            return Alarm(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Alarm?> {
-            return arrayOfNulls(size)
-        }
     }
 }

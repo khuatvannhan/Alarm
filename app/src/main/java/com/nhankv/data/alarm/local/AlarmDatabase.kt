@@ -9,7 +9,6 @@ import android.databinding.adapters.Converters
 import com.nhankv.data.alarm.model.Alarm
 
 @Database(entities = arrayOf(Alarm::class), version = 1)
-@TypeConverters(Converters::class)
 abstract class AlarmDatabase : RoomDatabase() {
     abstract fun alarmDao(): AlarmDao
 

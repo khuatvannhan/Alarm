@@ -1,8 +1,11 @@
 package com.nhankv.data.alarm
 
+import com.nhankv.data.alarm.local.AlarmDao
+import com.nhankv.data.alarm.local.AlarmDatabase
 import com.nhankv.data.alarm.local.AlarmsDataLocal
 import com.nhankv.data.alarm.model.Alarm
 import com.nhankv.data.alarm.remote.AlarmsDataRemote
+import com.nhankv.util.AppExecutors
 
 class AlarmsRepository : AlarmsDataSource {
     private val TAG = javaClass.name
@@ -10,6 +13,13 @@ class AlarmsRepository : AlarmsDataSource {
     private lateinit var mAlarmsDataLocal: AlarmsDataSource
     private var mCachedListAlarm = ArrayList<Alarm>()
     private var mCacheIsDirty = false
+    private lateinit var mAlarmDao: AlarmDao
+    private lateinit var mAppExecutor: AppExecutors
+
+    fun init(alarmDao: AlarmDao, appExecutors: AppExecutors) {
+        this.mAlarmDao = alarmDao
+        this.mAppExecutor = appExecutors
+    }
 
     override fun getAlarms(callBack: AlarmsDataSource.LoadAlarmCallBack) {
         if (mCachedListAlarm.isNotEmpty() && !mCacheIsDirty) {
@@ -44,9 +54,9 @@ class AlarmsRepository : AlarmsDataSource {
 
     private fun getAlarmsFromLocalDataSource(callBack: AlarmsDataSource.LoadAlarmCallBack) {
         if (!::mAlarmsDataLocal.isInitialized) {
-            mAlarmsDataLocal = AlarmsDataLocal.getInstance()
+            mAlarmsDataLocal = AlarmsDataLocal.getInstance(mAppExecutor, mAlarmDao)
         }
-        mAlarmsDataLocal.getAlarms(object: AlarmsDataSource.LoadAlarmCallBack {
+        mAlarmsDataLocal.getAlarms(object : AlarmsDataSource.LoadAlarmCallBack {
             override fun onAlarmsLoaded(alarms: ArrayList<Alarm>) {
                 refreshAlarms(alarms)
                 callBack.onAlarmsLoaded(mCachedListAlarm)
@@ -130,4 +140,15 @@ class AlarmsRepository : AlarmsDataSource {
     override fun deleteTask(id: String) {
     }
 
+    companion object {
+        private var INSTANCE: AlarmsRepository? = null
+
+        @JvmStatic
+        fun getInstance() =
+                INSTANCE ?: synchronized(AlarmsRepository::class.java) {
+                    INSTANCE ?: AlarmsRepository().also {
+                        INSTANCE = it
+                    }
+                }
+    }
 }

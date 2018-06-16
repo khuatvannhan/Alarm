@@ -9,6 +9,10 @@
         <import type="android.view.View" />
 
         <variable
+            name="listener"
+            type="com.nhankv.alarm.AlarmListener" />
+
+        <variable
             name="viewModel"
             type="com.nhankv.alarm.AlarmsViewModel" />
     </data>
@@ -39,7 +43,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
                 android:gravity="center_vertical"
-                android:onClick="@{() -> viewModel.selectAll()}"
+                android:onClick="@{() -> listener.selectAll()}"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -61,7 +65,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="8dp"
                 android:gravity="end|center_vertical"
-                android:onClick="@{() -> viewModel.deleteAlarmsSelected()}"
+                android:onClick="@{() -> listener.deleteAlarmsSelected()}"
                 android:text="@string/delete" />
         </RelativeLayout>
 
@@ -75,6 +79,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:onClick="@{() -> listener.startDetailAlarm()}"
+            android:src="@android:drawable/ic_input_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

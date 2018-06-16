@@ -16,6 +16,13 @@ class AlarmsDataRemote: AlarmsDataSource {
     }
 
     override fun getAlarm(id: String, callBack: AlarmsDataSource.GetAlarmCallBack) {
+        for (alarm in mListAlarm) {
+            if (alarm.getmId().equals(id, ignoreCase = false)) {
+                callBack.onAlarmLoaded(alarm)
+                return
+            }
+        }
+        callBack.onDataNotAvailable()
     }
 
     override fun saveAlarm(alarm: Alarm) {

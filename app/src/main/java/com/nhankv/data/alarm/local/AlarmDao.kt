@@ -6,7 +6,7 @@ import com.nhankv.data.alarm.model.Alarm
 /**
  * Data Access Object for the alarms table.
  */
-interface AlarmDao {
+@Dao interface AlarmDao {
 
     /**
      * Select all alarms from the alarms table.

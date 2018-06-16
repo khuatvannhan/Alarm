@@ -9,4 +9,6 @@
     <string name="stop_watch">Stop Watch</string>
     <string name="all_select">All</string>
     <string name="delete">Delete</string>
+    <string name="txt_save">SAVE</string>
+    <string name="txt_cancel">CANCEL</string>
 </resources>
