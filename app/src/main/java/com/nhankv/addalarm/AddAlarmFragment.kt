@@ -1,34 +1,91 @@
 package com.nhankv.addalarm
 
-import android.content.Context
-import android.net.Uri
+import android.app.DatePickerDialog
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
+import com.nhankv.alarm.databinding.FragmentAddAlarmBinding
+import kotlin.collections.ArrayList
 
-import com.nhankv.alarm.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSetListener {
+    private val TAG = javaClass.name
+    private lateinit var mFragAddAlarmBinding: FragmentAddAlarmBinding
+    private lateinit var mAddAlarmViewModel: AddAlarmViewModel
+    private lateinit var mHoursAdapter: AddAlarmAdapter
+    private lateinit var mMinutesAdapter: AddAlarmAdapter
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [AddAlarmFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [AddAlarmFragment.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
-class AddAlarmFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_alarm, container, false)
+        init()
+        initBinding(inflater, container)
+        setUpHourAdapter()
+        setUpMinutesAdapter()
+        generateTimeAlarm()
+        return mFragAddAlarmBinding.root
+    }
+
+    private fun init() {
+        if (!::mAddAlarmViewModel.isInitialized && activity != null) {
+            mAddAlarmViewModel = AddAlarmViewModel(activity!!.application)
+        }
+    }
+
+    private fun initBinding(inflater: LayoutInflater, container: ViewGroup?) {
+        if (!::mFragAddAlarmBinding.isInitialized) {
+            mFragAddAlarmBinding = FragmentAddAlarmBinding.inflate(inflater, container, false)
+        }
+        mFragAddAlarmBinding.listener = this
+        mFragAddAlarmBinding.viewModel = mAddAlarmViewModel
+    }
+
+    private fun setUpHourAdapter() {
+        val viewModel = mFragAddAlarmBinding.viewModel
+        if (viewModel != null && context != null && !::mHoursAdapter.isInitialized) {
+            mHoursAdapter = AddAlarmAdapter(ArrayList(0), viewModel)
+            mFragAddAlarmBinding.listHours.adapter = mHoursAdapter
+        }
+    }
+
+    private fun setUpMinutesAdapter() {
+        val viewModel = mFragAddAlarmBinding.viewModel
+        if (viewModel != null && context != null && !::mMinutesAdapter.isInitialized) {
+            mMinutesAdapter = AddAlarmAdapter(ArrayList(0), viewModel)
+            mFragAddAlarmBinding.listMinutes.adapter = mMinutesAdapter
+        }
+    }
+
+    private fun generateTimeAlarm() {
+        if (::mAddAlarmViewModel.isInitialized) {
+            mAddAlarmViewModel.generateTimeAlarm()
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    override fun onClickDate() {
+        val datePickerDialog = DatePickerDialog(activity)
+        datePickerDialog.setOnDateSetListener(this)
+        datePickerDialog.show()
+    }
+
+    override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int) {
+        Log.d(TAG, "nhankv ------- $dayOfMonth/$monthOfYear/$year --------")
+    }
+
+    override fun onClickCancel() {
+        if (activity != null) {
+            activity!!.finish()
+        }
+    }
+
+    override fun onClickSave() {
+
     }
 
     companion object {

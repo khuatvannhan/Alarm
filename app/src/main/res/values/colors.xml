@@ -6,6 +6,9 @@
     <color name="colorNTB">#FFFFCC</color>
     <color name="colorNtbActive">#079BFF</color>
     <color name="coloNtbBackGround">#E8ECF6</color>
+    <color name="colorTxtTitle">#079BFF</color>
+    <color name="colorbgAll">#F4F6F7</color>
+    <color name="colorBr">#D5DBDB</color>
 
     <drawable name="completedTaskBackground">#CCCCCC</drawable>
 

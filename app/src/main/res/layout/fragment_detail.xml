@@ -6,13 +6,47 @@
     tools:context="com.nhankv.detailalarm.DetailFragment">
 
     <LinearLayout
+        android:id="@+id/llSaveAndCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:minHeight="?android:attr/actionBarSize"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.nhankv.customview.TextViewPlus
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="@{() -> listener.onClickCancel()}"
+            android:text="@string/txt_cancel"
+            android:textColor="@color/colorTxtTitle"
+            android:textSize="@dimen/size_text_all"
+            android:textStyle="bold" />
+
+        <com.nhankv.customview.TextViewPlus
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="@{() ->  listener.onClickSave()}"
+            android:text="@string/txt_save"
+            android:textColor="@color/colorTxtTitle"
+            android:textSize="@dimen/size_text_all"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/llDate"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_menu_h"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/llSaveAndCancel"></LinearLayout>
 
     <LinearLayout
         android:id="@+id/llTimer"

@@ -1,78 +1,233 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.nhankv.detailalarm.DetailFragment">
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:id="@+id/llDate"
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.nhankv.addalarm.AddAlarmViewModel" />
+
+        <variable
+            name="listener"
+            type="com.nhankv.addalarm.AddAlarmListener" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/item_menu_h"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llTimer"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_timer_h"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llDate">
-
-        <ListView
-            android:layout_width="100dp"
-            android:layout_height="match_parent"></ListView>
-
-        <ListView
-            android:layout_width="100dp"
-            android:layout_height="match_parent"></ListView>
-
-        <ListView
-            android:layout_width="100dp"
-            android:layout_height="match_parent"></ListView>
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llTimer">
+        android:layout_height="match_parent"
+        android:background="@color/colorbgAll"
+        tools:context="com.nhankv.detailalarm.DetailFragment">
 
         <LinearLayout
+            android:id="@+id/llSaveAndCancel"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:minHeight="?android:attr/actionBarSize"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_menu_h"></LinearLayout>
+            <com.nhankv.customview.TextViewPlus
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.99"
+                android:gravity="center"
+                android:onClick="@{() -> listener.onClickCancel()}"
+                android:text="@string/txt_cancel"
+                android:textColor="@color/colorTxtTitle"
+                android:textSize="@dimen/size_text_all"
+                android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_menu_h"></LinearLayout>
+            <View
+                android:id="@+id/view"
+                android:layout_width="00.1dp"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@color/colorBr" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_menu_h"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_menu_h"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_menu_h"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_menu_h"></LinearLayout>
+            <com.nhankv.customview.TextViewPlus
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.99"
+                android:gravity="center"
+                android:onClick="@{() ->  listener.onClickSave()}"
+                android:text="@string/txt_save"
+                android:textColor="@color/colorTxtTitle"
+                android:textSize="@dimen/size_text_all"
+                android:textStyle="bold" />
         </LinearLayout>
-    </ScrollView>
-</android.support.constraint.ConstraintLayout>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="00.1dp"
+            android:background="@color/colorBr"
+            app:layout_constraintTop_toBottomOf="@+id/llSaveAndCancel" />
+
+        <LinearLayout
+            android:id="@+id/llDate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_menu_h"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view1">
+
+            <com.nhankv.customview.TextViewPlus
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:padding="15dp"
+                android:text="@{viewModel.dayofWeek}"
+                android:textColor="@color/colorTxtTitle"
+                android:textSize="@dimen/size_text_all" />
+
+            <com.nhankv.customview.TextViewPlus
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|right"
+                android:onClick="@{() -> listener.onClickDate()}"
+                android:padding="15dp"
+                android:text="@{viewModel.dayOfMonth}"
+                android:textColor="@color/colorTxtTitle"
+                android:textSize="@dimen/size_text_all" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="00.1dp"
+            android:background="@color/colorBr"
+            app:layout_constraintTop_toBottomOf="@+id/llDate" />
+
+        <LinearLayout
+            android:id="@+id/llTimer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_timer_h"
+            android:background="@android:color/transparent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2">
+
+            <ListView
+                android:id="@+id/listHours"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                bind:items="@{viewModel.itemsHour}"></ListView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="@color/colorTxtTitle"
+                android:textSize="@dimen/size_text_two_dots"
+                android:textStyle="bold" />
+
+            <ListView
+                android:id="@+id/listMinutes"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                bind:items="@{viewModel.itemsMinutes}"></ListView>
+
+            <ListView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:visibility="@{viewModel.isFormatHour ? View.VISIBLE : View.GONE}"></ListView>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="00.1dp"
+            android:background="@color/colorBr"
+            app:layout_constraintTop_toBottomOf="@+id/llTimer" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_menu_h"></LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="00.1dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/colorBr" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_menu_h"></LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="00.1dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/colorBr" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_menu_h"></LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="00.1dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/colorBr" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_menu_h"></LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="00.1dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/colorBr" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_menu_h"></LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="00.1dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/colorBr" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_menu_h"></LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

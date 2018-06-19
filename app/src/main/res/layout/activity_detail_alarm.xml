@@ -1,60 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nhankv.detailalarm.DetailAlarmActivity">
 
-    <data>
-
-        <variable
-            name="listener"
-            type="com.nhankv.detailalarm.DetailListener" />
-    </data>
-
-    <android.support.constraint.ConstraintLayout
+    <FrameLayout
+        android:id="@+id/contentFrame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.nhankv.detailalarm.DetailAlarmActivity">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></FrameLayout>
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/appBarLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?android:attr/actionBarSize"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:onClick="@{() -> listener.onClickCancel()}"
-                android:text="@string/txt_cancel"
-                android:textSize="@dimen/size_text_all"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:onClick="@{() ->  listener.onClickSave()}"
-                android:text="@string/txt_save"
-                android:textSize="@dimen/size_text_all"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <FrameLayout
-            android:id="@+id/contentFrame"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"></FrameLayout>
-
-    </android.support.constraint.ConstraintLayout>
-</layout>
+</android.support.constraint.ConstraintLayout>
 

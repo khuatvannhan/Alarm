@@ -4,4 +4,6 @@ interface AddAlarmListener {
     fun onClickCancel()
 
     fun onClickSave()
+
+    fun onClickDate()
 }

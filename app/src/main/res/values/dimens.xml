@@ -10,6 +10,8 @@
 
     <dimen name="size_text_all">16sp</dimen>
 
+    <dimen name="size_text_two_dots">30dp</dimen>
+
     <dimen name="head_detail_alarm">250dp</dimen>
 
     <dimen name="item_menu_h">60dp</dimen>
