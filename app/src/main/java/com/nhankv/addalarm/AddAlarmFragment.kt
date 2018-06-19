@@ -10,8 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import com.nhankv.alarm.R
 import com.nhankv.alarm.databinding.FragmentAddAlarmBinding
-import com.wangjie.wheelview.WheelView
+import com.weigan.loopview.OnItemSelectedListener
 import java.util.*
 
 
@@ -47,23 +48,29 @@ class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSe
     }
 
     private fun setUpHourAdapter() {
-        mFragAddAlarmBinding.listHours.offset = 1
+        mFragAddAlarmBinding.listHours.setTextSize(30f)
+        mFragAddAlarmBinding.listHours.setItemsVisibleCount(5)
+        mFragAddAlarmBinding.listHours.setLineSpacingMultiplier(2.0f)
         mFragAddAlarmBinding.listHours.setItems(mAddAlarmViewModel.itemsHour)
-        mFragAddAlarmBinding.listHours.onWheelViewListener = object: WheelView.OnWheelViewListener() {
-            override fun onSelected(selectedIndex: Int, item: String?) {
-                Log.i(TAG, "selected index $selectedIndex item $item")
+        mFragAddAlarmBinding.listHours.setCenterTextColor(resources.getColor(R.color.colorTxtTitle))
+        mFragAddAlarmBinding.listHours.setListener(object: OnItemSelectedListener {
+            override fun onItemSelected(index: Int) {
+                Log.i(TAG, "selected index $index ")
             }
-        }
+        })
     }
 
     private fun setUpMinutesAdapter() {
-        mFragAddAlarmBinding.listMinutes.offset = 1
+        mFragAddAlarmBinding.listMinutes.setTextSize(30f)
+        mFragAddAlarmBinding.listMinutes.setItemsVisibleCount(5)
+        mFragAddAlarmBinding.listMinutes.setLineSpacingMultiplier(2.0f)
         mFragAddAlarmBinding.listMinutes.setItems(mAddAlarmViewModel.itemsMinutes)
-        mFragAddAlarmBinding.listMinutes.onWheelViewListener = object: WheelView.OnWheelViewListener() {
-            override fun onSelected(selectedIndex: Int, item: String?) {
-                Log.i(TAG, "selected index $selectedIndex item $item")
+        mFragAddAlarmBinding.listMinutes.setCenterTextColor(resources.getColor(R.color.colorTxtTitle))
+        mFragAddAlarmBinding.listMinutes.setListener(object: OnItemSelectedListener {
+            override fun onItemSelected(index: Int) {
+                Log.i(TAG, "selected index $index ")
             }
-        }
+        })
     }
 
     private fun generateTimeAlarm() {

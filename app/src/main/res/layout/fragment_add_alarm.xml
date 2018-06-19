@@ -120,7 +120,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view2">
 
-            <com.wangjie.wheelview.WheelView
+            <com.weigan.loopview.LoopView
                 android:id="@+id/listHours"
                 android:layout_width="100dp"
                 android:layout_height="match_parent" />
@@ -134,12 +134,12 @@
                 android:textSize="@dimen/size_text_two_dots"
                 android:textStyle="bold" />
 
-            <com.wangjie.wheelview.WheelView
+            <com.weigan.loopview.LoopView
                 android:id="@+id/listMinutes"
                 android:layout_width="100dp"
                 android:layout_height="match_parent" />
 
-            <com.wangjie.wheelview.WheelView
+            <com.weigan.loopview.LoopView
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:visibility="@{viewModel.isFormatHour ? View.VISIBLE : View.GONE}" />
