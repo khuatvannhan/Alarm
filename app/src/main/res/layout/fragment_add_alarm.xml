@@ -120,11 +120,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view2">
 
-            <ListView
+            <com.wangjie.wheelview.WheelView
                 android:id="@+id/listHours"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
-                bind:items="@{viewModel.itemsHour}"></ListView>
+                android:layout_height="match_parent" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -135,16 +134,15 @@
                 android:textSize="@dimen/size_text_two_dots"
                 android:textStyle="bold" />
 
-            <ListView
+            <com.wangjie.wheelview.WheelView
                 android:id="@+id/listMinutes"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
-                bind:items="@{viewModel.itemsMinutes}"></ListView>
+                android:layout_height="match_parent" />
 
-            <ListView
+            <com.wangjie.wheelview.WheelView
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:visibility="@{viewModel.isFormatHour ? View.VISIBLE : View.GONE}"></ListView>
+                android:visibility="@{viewModel.isFormatHour ? View.VISIBLE : View.GONE}" />
         </LinearLayout>
 
         <View

@@ -11,7 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import com.nhankv.alarm.databinding.FragmentAddAlarmBinding
-import kotlin.collections.ArrayList
+import com.wangjie.wheelview.WheelView
+import java.util.*
 
 
 class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSetListener {
@@ -25,9 +26,9 @@ class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSe
                               savedInstanceState: Bundle?): View? {
         init()
         initBinding(inflater, container)
+        generateTimeAlarm()
         setUpHourAdapter()
         setUpMinutesAdapter()
-        generateTimeAlarm()
         return mFragAddAlarmBinding.root
     }
 
@@ -46,18 +47,22 @@ class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSe
     }
 
     private fun setUpHourAdapter() {
-        val viewModel = mFragAddAlarmBinding.viewModel
-        if (viewModel != null && context != null && !::mHoursAdapter.isInitialized) {
-            mHoursAdapter = AddAlarmAdapter(ArrayList(0), viewModel)
-            mFragAddAlarmBinding.listHours.adapter = mHoursAdapter
+        mFragAddAlarmBinding.listHours.offset = 1
+        mFragAddAlarmBinding.listHours.setItems(mAddAlarmViewModel.itemsHour)
+        mFragAddAlarmBinding.listHours.onWheelViewListener = object: WheelView.OnWheelViewListener() {
+            override fun onSelected(selectedIndex: Int, item: String?) {
+                Log.i(TAG, "selected index $selectedIndex item $item")
+            }
         }
     }
 
     private fun setUpMinutesAdapter() {
-        val viewModel = mFragAddAlarmBinding.viewModel
-        if (viewModel != null && context != null && !::mMinutesAdapter.isInitialized) {
-            mMinutesAdapter = AddAlarmAdapter(ArrayList(0), viewModel)
-            mFragAddAlarmBinding.listMinutes.adapter = mMinutesAdapter
+        mFragAddAlarmBinding.listMinutes.offset = 1
+        mFragAddAlarmBinding.listMinutes.setItems(mAddAlarmViewModel.itemsMinutes)
+        mFragAddAlarmBinding.listMinutes.onWheelViewListener = object: WheelView.OnWheelViewListener() {
+            override fun onSelected(selectedIndex: Int, item: String?) {
+                Log.i(TAG, "selected index $selectedIndex item $item")
+            }
         }
     }
 

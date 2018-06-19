@@ -14,9 +14,9 @@ class AddAlarmViewModel(context: Application) : AndroidViewModel(context) {
     private val TAG = javaClass.name
     var dayofWeek = ObservableField(context.resources.getString(R.string.day_of_week)) //
     var dayOfMonth = ObservableField(context.resources.getString(R.string.day_of_month)) //
-    var itemsHour: ObservableList<TimeAlarm> = ObservableArrayList()
-    var itemsMinutes: ObservableList<TimeAlarm> = ObservableArrayList()
     var isFormatHour = ObservableBoolean(false)
+    var itemsHour = ArrayList<String>()
+    var itemsMinutes = ArrayList<String>()
 
     fun generateTimeAlarm() {
         generateHour()
@@ -25,17 +25,13 @@ class AddAlarmViewModel(context: Application) : AndroidViewModel(context) {
 
     private fun generateHour() {
         for (hour in 0..23) {
-            val timeHour = TimeAlarm()
-            timeHour.setTimeAlarm(hour.toString())
-            itemsHour.add(timeHour)
+            itemsHour.add(hour.toString())
         }
     }
 
     private fun generateMinute() {
         for (minute in 0..59) {
-            val timeMinute = TimeAlarm()
-            timeMinute.setTimeAlarm(minute.toString())
-            itemsMinutes.add(timeMinute)
+            itemsMinutes.add(minute.toString())
         }
     }
 }
