@@ -14,9 +14,11 @@
 
     <dimen name="head_detail_alarm">250dp</dimen>
 
-    <dimen name="item_menu_h">60dp</dimen>
+    <dimen name="item_menu_h">65dp</dimen>
 
     <dimen name="item_timer_h">150dp</dimen>
 
     <dimen name="title_margin_start_toolbar">50dp</dimen>
+
+    <dimen name="item_date_h">50dp</dimen>
 </resources>

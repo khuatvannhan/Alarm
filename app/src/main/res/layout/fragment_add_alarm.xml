@@ -26,8 +26,7 @@
         <LinearLayout
             android:id="@+id/llSaveAndCancel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?android:attr/actionBarSize"
+            android:layout_height="@dimen/item_date_h"
             android:orientation="horizontal"
             android:background="@color/coloNtbBackGround"
             android:weightSum="2"
@@ -74,7 +73,7 @@
         <LinearLayout
             android:id="@+id/llDate"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/item_menu_h"
+            android:layout_height="@dimen/item_date_h"
             android:background="@android:color/transparent"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
