@@ -20,7 +20,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorbgAll"
+        android:background="@color/colorBackGround"
         tools:context="com.nhankv.detailalarm.DetailFragment">
 
         <LinearLayout
@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:minHeight="?android:attr/actionBarSize"
             android:orientation="horizontal"
+            android:background="@color/coloNtbBackGround"
             android:weightSum="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
