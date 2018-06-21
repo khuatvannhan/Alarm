@@ -27,8 +27,8 @@
             android:id="@+id/llSaveAndCancel"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_date_h"
-            android:orientation="horizontal"
             android:background="@color/coloNtbBackGround"
+            android:orientation="horizontal"
             android:weightSum="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +38,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.99"
+                android:background="@drawable/bg_click_item"
                 android:gravity="center"
                 android:onClick="@{() -> listener.onClickCancel()}"
                 android:text="@string/txt_cancel"
@@ -55,6 +56,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.99"
+                android:background="@drawable/bg_click_item"
                 android:gravity="center"
                 android:onClick="@{() ->  listener.onClickSave()}"
                 android:text="@string/txt_save"
@@ -84,6 +86,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/bg_click_item"
                 android:gravity="center|left"
                 android:padding="15dp"
                 android:text="@{viewModel.dayofWeek}"
@@ -94,6 +97,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/bg_click_item"
                 android:gravity="center|right"
                 android:onClick="@{() -> listener.onClickDate()}"
                 android:padding="15dp"
@@ -167,8 +171,18 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/llRepeat"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_menu_h"></LinearLayout>
+                    android:layout_height="@dimen/item_menu_h"
+                    android:background="@drawable/bg_click_item"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/lvRepeat"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        bind:items="@{viewModel.itemsRepeat}" />
+                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -179,7 +193,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_menu_h"></LinearLayout>
+                    android:layout_height="@dimen/item_menu_h"
+                    android:background="@drawable/bg_click_item"></LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -190,7 +205,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_menu_h"></LinearLayout>
+                    android:layout_height="@dimen/item_menu_h"
+                    android:background="@drawable/bg_click_item"></LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -201,7 +217,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_menu_h"></LinearLayout>
+                    android:layout_height="@dimen/item_menu_h"
+                    android:background="@drawable/bg_click_item"></LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -212,7 +229,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_menu_h"></LinearLayout>
+                    android:layout_height="@dimen/item_menu_h"
+                    android:background="@drawable/bg_click_item"></LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -223,7 +241,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_menu_h"></LinearLayout>
+                    android:layout_height="@dimen/item_menu_h"
+                    android:background="@drawable/bg_click_item"></LinearLayout>
             </LinearLayout>
         </ScrollView>
     </android.support.constraint.ConstraintLayout>

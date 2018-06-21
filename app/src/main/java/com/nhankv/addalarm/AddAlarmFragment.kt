@@ -5,21 +5,26 @@ import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import android.widget.LinearLayout
+import com.nhankv.addalarm.repeat.RepeatViewAdapter
 import com.nhankv.alarm.R
 import com.nhankv.alarm.databinding.FragmentAddAlarmBinding
 import com.weigan.loopview.OnItemSelectedListener
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSetListener {
     private val TAG = javaClass.name
     private lateinit var mFragAddAlarmBinding: FragmentAddAlarmBinding
     private lateinit var mAddAlarmViewModel: AddAlarmViewModel
+    private lateinit var mRepeatAdapter: RepeatViewAdapter
     private lateinit var mHoursAdapter: AddAlarmAdapter
     private lateinit var mMinutesAdapter: AddAlarmAdapter
 
@@ -30,12 +35,14 @@ class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSe
         generateTimeAlarm()
         setUpHourAdapter()
         setUpMinutesAdapter()
+        setUpRepeatAdapter()
         return mFragAddAlarmBinding.root
     }
 
     private fun init() {
         if (!::mAddAlarmViewModel.isInitialized && activity != null) {
             mAddAlarmViewModel = AddAlarmViewModel(activity!!.application)
+            mAddAlarmViewModel.generateRepeat()
         }
     }
 
@@ -77,6 +84,16 @@ class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSe
         if (::mAddAlarmViewModel.isInitialized) {
             mAddAlarmViewModel.generateTimeAlarm()
         }
+    }
+
+    private fun setUpRepeatAdapter() {
+        if (::mAddAlarmViewModel.isInitialized && !::mRepeatAdapter.isInitialized) {
+            mRepeatAdapter = RepeatViewAdapter(ArrayList(0), mAddAlarmViewModel)
+        }
+        mFragAddAlarmBinding.lvRepeat.adapter = mRepeatAdapter
+        var layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        mFragAddAlarmBinding.lvRepeat.layoutManager = layoutManager
+        mFragAddAlarmBinding.lvRepeat.isNestedScrollingEnabled = false
     }
 
     @RequiresApi(Build.VERSION_CODES.N)

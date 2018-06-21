@@ -9,7 +9,9 @@
     <color name="colorTxtTitle">#45A1AE</color>
     <color name="colorBackGround">#FAFAFA</color>
     <color name="colorBr">#E6E6E6</color>
-
+    <color name="colorPressed">#E5E5E5</color>
+    <color name="colorSelected">#CCCCCC</color>
+    <color name="colortxtRepeat">#86898B</color>
     <drawable name="completedTaskBackground">#CCCCCC</drawable>
 
     <drawable name="touchFeedback">#CFD8DC</drawable>

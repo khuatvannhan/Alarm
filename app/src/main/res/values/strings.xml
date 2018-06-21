@@ -13,4 +13,5 @@
     <string name="txt_cancel">CANCEL</string>
     <string name="day_of_week">T2,T3,T4,T5,T6</string>
     <string name="day_of_month">Date</string>
+    <string name="sun">Su</string>
 </resources>

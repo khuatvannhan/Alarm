@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="dayRepeat"
+            type="com.nhankv.data.alarm.model.DayRepeat" />
+
+        <variable
+            name="listener"
+            type="com.nhankv.addalarm.repeat.RepeatItemListener" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="50dp"
+        android:layout_height="@dimen/item_menu_h"
+        android:gravity="center"
+        android:onClick="@{(view) -> listener.onSelected(view, dayRepeat)}"
+        android:textColor="@android:color/transparent">
+
+        <com.nhankv.customview.TextViewPlus
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{dayRepeat.mDay}"
+            android:textColor="@color/colortxtRepeat"
+            android:textSize="@dimen/size_text_all" />
+    </RelativeLayout>
+</layout>
+
