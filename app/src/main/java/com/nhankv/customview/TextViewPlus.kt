@@ -12,11 +12,11 @@ class TextViewPlus : TextView {
     constructor(context: Context) : super(context) {}
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        setTypeface(Typeface.createFromAsset(context.resources.assets, "fonts/agency.ttf"))
+//        setTypeface(Typeface.createFromAsset(context.resources.assets, "fonts/sans.ttf"))
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {
-        setTypeface(Typeface.createFromAsset(context.resources.assets, "fonts/agency.ttf"))
+//        setTypeface(Typeface.createFromAsset(context.resources.assets, "fonts/sans.ttf"))
     }
 
     companion object {

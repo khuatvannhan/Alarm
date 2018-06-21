@@ -88,7 +88,7 @@ class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSe
 
     private fun setUpRepeatAdapter() {
         if (::mAddAlarmViewModel.isInitialized && !::mRepeatAdapter.isInitialized) {
-            mRepeatAdapter = RepeatViewAdapter(ArrayList(0), mAddAlarmViewModel)
+            mRepeatAdapter = RepeatViewAdapter(context!!, ArrayList(0), mAddAlarmViewModel)
         }
         mFragAddAlarmBinding.lvRepeat.adapter = mRepeatAdapter
         var layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

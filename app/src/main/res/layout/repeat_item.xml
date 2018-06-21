@@ -16,12 +16,14 @@
         android:layout_width="50dp"
         android:layout_height="@dimen/item_menu_h"
         android:gravity="center"
-        android:onClick="@{(view) -> listener.onSelected(view, dayRepeat)}"
+        android:onClick="@{() -> listener.onSelected(txtDayRepeat, dayRepeat)}"
         android:textColor="@android:color/transparent">
 
         <com.nhankv.customview.TextViewPlus
+            android:id="@+id/txtDayRepeat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@{dayRepeat.mDay}"
             android:textColor="@color/colortxtRepeat"
             android:textSize="@dimen/size_text_all" />

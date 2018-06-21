@@ -25,7 +25,7 @@
         app:ntb_title_mode="all"
         app:ntb_title_size="@dimen/size_text_ntb"
         app:ntb_titled="true"
-        app:ntb_typeface="fonts/agency.ttf" />
+        app:ntb_typeface="fonts/sanss.ttf" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"

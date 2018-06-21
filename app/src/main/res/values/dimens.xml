@@ -6,9 +6,9 @@
 
     <dimen name="list_item_padding">8dp</dimen>
 
-    <dimen name="size_text_ntb">12sp</dimen>
+    <dimen name="size_text_ntb">16sp</dimen>
 
-    <dimen name="size_text_all">16sp</dimen>
+    <dimen name="size_text_all">17sp</dimen>
 
     <dimen name="size_text_two_dots">30dp</dimen>
 
