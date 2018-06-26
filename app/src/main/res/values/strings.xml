@@ -14,4 +14,10 @@
     <string name="day_of_week">T2,T3,T4,T5,T6</string>
     <string name="day_of_month">Date</string>
     <string name="sun">Su</string>
+    <string name="name_alarm">Name alarm</string>
+    <string name="name_alarm_default">No use</string>
+    <string name="title_pause">Pause alarm</string>
+    <string name="title_vibrate">Vibrate</string>
+    <string name="name_alarm_bell">Volume and alarm bell</string>
+    <string name="title_repeat">Repeat</string>
 </resources>

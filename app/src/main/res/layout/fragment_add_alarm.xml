@@ -168,81 +168,230 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                <LinearLayout
+                <android.support.constraint.ConstraintLayout
                     android:id="@+id/llRepeat"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_menu_h"
+                    android:layout_height="@dimen/item_menu_repeat_h"
                     android:background="@drawable/bg_click_item"
-                    android:orientation="horizontal">
+                    android:paddingEnd="5dp"
+                    android:paddingStart="5dp">
+
+                    <com.nhankv.customview.TextViewPlus
+                        android:id="@+id/titleRepeat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/title_repeat"
+                        android:textColor="@color/colortxtTitle2"
+                        android:textSize="@dimen/size_text_title_all"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/lvRepeat"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/titleRepeat"
                         bind:items="@{viewModel.itemsRepeat}" />
-                </LinearLayout>
+                </android.support.constraint.ConstraintLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="00.1dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
+                    android:background="@color/colorBr" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_menu_h"
+                    android:background="@drawable/bg_click_item"
+                    android:paddingEnd="5dp"
+                    android:paddingStart="5dp">
+
+                    <com.nhankv.customview.TextViewPlus
+                        android:id="@+id/titleNameAlarm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/name_alarm"
+                        android:textColor="@color/colortxtTitle2"
+                        android:textSize="@dimen/size_text_title_all"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.nhankv.customview.TextViewPlus
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/name_alarm_default"
+                        android:textColor="@color/colorTxtTitle"
+                        android:textSize="@dimen/size_text_all"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/titleNameAlarm" />
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="00.1dp"
+                    android:background="@color/colorBr" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_menu_h"
+                    android:background="@drawable/bg_click_item"
+                    android:paddingStart="5dp">
+
+                    <com.nhankv.customview.TextViewPlus
+                        android:id="@+id/txtTitlePause"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/title_pause"
+                        android:textColor="@color/colortxtTitle2"
+                        android:textSize="@dimen/size_text_title_all"
+                        app:layout_constraintEnd_toStartOf="@+id/switchPauseAlarm"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.nhankv.customview.TextViewPlus
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="8dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="aaaaaaaaaaaa"
+                        android:textColor="@color/colorTxtTitle"
+                        android:textSize="@dimen/size_text_all"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/switchPauseAlarm"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTitlePause" />
+
+                    <Switch
+                        android:id="@+id/switchPauseAlarm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:theme="@style/SCBSwitch"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="00.1dp"
+                    android:background="@color/colorBr" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_menu_h"
+                    android:background="@drawable/bg_click_item"
+                    android:paddingEnd="5dp"
+                    android:paddingStart="5dp">
+
+                    <com.nhankv.customview.TextViewPlus
+                        android:id="@+id/titleAlarmBell"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/name_alarm_bell"
+                        android:textColor="@color/colortxtTitle2"
+                        android:textSize="@dimen/size_text_title_all"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.nhankv.customview.TextViewPlus
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="bbbbbb"
+                        android:textColor="@color/colorTxtTitle"
+                        android:textSize="@dimen/size_text_all"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/titleAlarmBell" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="00.1dp"
+                    android:background="@color/colorBr" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_menu_h"
+                    android:background="@drawable/bg_click_item"
+                    android:paddingStart="5dp">
+
+                    <com.nhankv.customview.TextViewPlus
+                        android:id="@+id/txtTitleVibrate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/title_vibrate"
+                        android:textColor="@color/colortxtTitle2"
+                        android:textSize="@dimen/size_text_title_all"
+                        app:layout_constraintEnd_toStartOf="@+id/switchVibrate"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.nhankv.customview.TextViewPlus
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="8dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="aaaaaaaaaaaa"
+                        android:textColor="@color/colorTxtTitle"
+                        android:textSize="@dimen/size_text_all"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/switchVibrate"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTitleVibrate" />
+
+                    <Switch
+                        android:id="@+id/switchVibrate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:theme="@style/SCBSwitch"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+                <!--<View
+                    android:layout_width="match_parent"
+                    android:layout_height="00.1dp"
                     android:background="@color/colorBr" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_menu_h"
-                    android:background="@drawable/bg_click_item"></LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="00.1dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@color/colorBr" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_menu_h"
-                    android:background="@drawable/bg_click_item"></LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="00.1dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@color/colorBr" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_menu_h"
-                    android:background="@drawable/bg_click_item"></LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="00.1dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@color/colorBr" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_menu_h"
-                    android:background="@drawable/bg_click_item"></LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="00.1dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@color/colorBr" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_menu_h"
-                    android:background="@drawable/bg_click_item"></LinearLayout>
+                    android:background="@drawable/bg_click_item"
+                    android:orientation="vertical"
+                    android:paddingEnd="5dp"
+                    android:paddingStart="5dp"></LinearLayout>-->
             </LinearLayout>
         </ScrollView>
     </android.support.constraint.ConstraintLayout>

@@ -13,9 +13,9 @@
     </data>
 
     <RelativeLayout
-        android:layout_width="50dp"
+        android:layout_width="52dp"
         android:layout_height="@dimen/item_menu_h"
-        android:gravity="center"
+        android:gravity="center|start"
         android:onClick="@{() -> listener.onSelected(txtDayRepeat, dayRepeat)}"
         android:textColor="@android:color/transparent">
 

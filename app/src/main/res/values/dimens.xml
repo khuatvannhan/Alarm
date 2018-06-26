@@ -8,13 +8,17 @@
 
     <dimen name="size_text_ntb">16sp</dimen>
 
-    <dimen name="size_text_all">17sp</dimen>
+    <dimen name="size_text_all">15sp</dimen>
+
+    <dimen name="size_text_title_all">16sp</dimen>
 
     <dimen name="size_text_two_dots">30dp</dimen>
 
     <dimen name="head_detail_alarm">250dp</dimen>
 
     <dimen name="item_menu_h">65dp</dimen>
+
+    <dimen name="item_menu_repeat_h">70dp</dimen>
 
     <dimen name="item_timer_h">150dp</dimen>
 

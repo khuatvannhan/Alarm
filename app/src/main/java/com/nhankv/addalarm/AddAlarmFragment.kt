@@ -15,6 +15,7 @@ import android.widget.LinearLayout
 import com.nhankv.addalarm.repeat.RepeatViewAdapter
 import com.nhankv.alarm.R
 import com.nhankv.alarm.databinding.FragmentAddAlarmBinding
+import com.nhankv.customview.CustomLinearLayoutManager
 import com.weigan.loopview.OnItemSelectedListener
 import java.util.*
 import kotlin.collections.ArrayList
@@ -91,9 +92,9 @@ class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSe
             mRepeatAdapter = RepeatViewAdapter(context!!, ArrayList(0), mAddAlarmViewModel)
         }
         mFragAddAlarmBinding.lvRepeat.adapter = mRepeatAdapter
-        var layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        var layoutManager = CustomLinearLayoutManager(context!!,
+                LinearLayoutManager.HORIZONTAL, false)
         mFragAddAlarmBinding.lvRepeat.layoutManager = layoutManager
-        mFragAddAlarmBinding.lvRepeat.isNestedScrollingEnabled = false
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
