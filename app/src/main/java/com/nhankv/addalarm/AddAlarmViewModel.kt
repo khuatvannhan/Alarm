@@ -20,6 +20,7 @@ class AddAlarmViewModel(var context: Application) : AndroidViewModel(context) {
     var isFormatHour = ObservableBoolean(false)
     var itemsRepeat = ObservableArrayList<DayRepeat>()
     var alarm = Alarm()
+    var labelAlarm = ObservableField(context.resources.getString(R.string.name_alarm_default))
     var itemsHour = ArrayList<String>()
     var itemsMinutes = ArrayList<String>()
 

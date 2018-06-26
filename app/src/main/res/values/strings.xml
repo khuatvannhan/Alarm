@@ -20,4 +20,7 @@
     <string name="title_vibrate">Vibrate</string>
     <string name="name_alarm_bell">Volume and alarm bell</string>
     <string name="title_repeat">Repeat</string>
+    <string name="yes">Yes</string>
+    <string name="ok">OK</string>
+    <string name="exit">EXIT</string>
 </resources>

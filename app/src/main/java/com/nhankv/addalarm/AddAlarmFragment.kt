@@ -1,6 +1,7 @@
 package com.nhankv.addalarm
 
 import android.app.DatePickerDialog
+import android.app.Dialog
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -16,13 +17,17 @@ import com.nhankv.addalarm.repeat.RepeatViewAdapter
 import com.nhankv.alarm.R
 import com.nhankv.alarm.databinding.FragmentAddAlarmBinding
 import com.nhankv.customview.CustomLinearLayoutManager
+import com.nhankv.customview.dialog.CustomDialog
+import com.nhankv.customview.dialog.DialogListener
 import com.weigan.loopview.OnItemSelectedListener
 import java.util.*
 import kotlin.collections.ArrayList
 
 
-class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSetListener {
+class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSetListener,
+        DialogListener {
     private val TAG = javaClass.name
+    private lateinit var dialogLabel: CustomDialog
     private lateinit var mFragAddAlarmBinding: FragmentAddAlarmBinding
     private lateinit var mAddAlarmViewModel: AddAlarmViewModel
     private lateinit var mRepeatAdapter: RepeatViewAdapter
@@ -61,7 +66,7 @@ class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSe
         mFragAddAlarmBinding.listHours.setLineSpacingMultiplier(2.0f)
         mFragAddAlarmBinding.listHours.setItems(mAddAlarmViewModel.itemsHour)
         mFragAddAlarmBinding.listHours.setCenterTextColor(resources.getColor(R.color.colorTxtTitle))
-        mFragAddAlarmBinding.listHours.setListener(object: OnItemSelectedListener {
+        mFragAddAlarmBinding.listHours.setListener(object : OnItemSelectedListener {
             override fun onItemSelected(index: Int) {
                 Log.i(TAG, "selected index $index ")
             }
@@ -74,7 +79,7 @@ class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSe
         mFragAddAlarmBinding.listMinutes.setLineSpacingMultiplier(2.0f)
         mFragAddAlarmBinding.listMinutes.setItems(mAddAlarmViewModel.itemsMinutes)
         mFragAddAlarmBinding.listMinutes.setCenterTextColor(resources.getColor(R.color.colorTxtTitle))
-        mFragAddAlarmBinding.listMinutes.setListener(object: OnItemSelectedListener {
+        mFragAddAlarmBinding.listMinutes.setListener(object : OnItemSelectedListener {
             override fun onItemSelected(index: Int) {
                 Log.i(TAG, "selected index $index ")
             }
@@ -116,6 +121,26 @@ class AddAlarmFragment : Fragment(), AddAlarmListener, DatePickerDialog.OnDateSe
 
     override fun onClickSave() {
 
+    }
+
+    override fun onClickLabel() {
+        if (context != null) {
+            dialogLabel = CustomDialog(context!!, this)
+            dialogLabel.show()
+        }
+    }
+
+    override fun onClickOk(value: String) {
+        if (::mAddAlarmViewModel.isInitialized) {
+            if (!value.equals("", ignoreCase = false)) {
+                mAddAlarmViewModel.labelAlarm.set(value)
+            }
+        }
+        dialogLabel.dismiss()
+    }
+
+    override fun onClickExit() {
+        dialogLabel.dismiss()
     }
 
     companion object {

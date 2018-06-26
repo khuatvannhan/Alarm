@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.nhankv.customview.dialog.DialogListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_dialog"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <com.nhankv.customview.TextViewPlus
+                android:id="@+id/txtLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center|start"
+                android:text="@string/name_alarm"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/size_text_title_all"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/edLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:inputType="textNoSuggestions|textVisiblePassword"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:textColor="@color/colortxtTitle2"
+                android:textSize="@dimen/size_text_all"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtLabel" />
+
+
+            <com.nhankv.customview.TextViewPlus
+                android:id="@+id/btn_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="10dp"
+                android:onClick="@{() -> listener.onClickOk(edLabel.getText().toString())}"
+                android:text="@string/ok"
+                android:textColor="@color/colorTxtTitle"
+                android:textSize="@dimen/size_text_title_all"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edLabel" />
+
+            <com.nhankv.customview.TextViewPlus
+                android:id="@+id/btn_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginTop="10dp"
+                android:onClick="@{_ -> listener.onClickExit()}"
+                android:text="@string/exit"
+                android:textColor="@color/colorTxtTitle"
+                android:textSize="@dimen/size_text_title_all"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_yes"
+                app:layout_constraintTop_toBottomOf="@+id/edLabel" />
+
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</layout>

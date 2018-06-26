@@ -212,11 +212,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_menu_h"
                     android:background="@drawable/bg_click_item"
+                    android:onClick="@{_ -> listener.onClickLabel()}"
                     android:paddingEnd="5dp"
                     android:paddingStart="5dp">
 
                     <com.nhankv.customview.TextViewPlus
-                        android:id="@+id/titleNameAlarm"
+                        android:id="@+id/titleLabelAlarm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -233,13 +234,13 @@
                         android:layout_marginBottom="5dp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="@string/name_alarm_default"
+                        android:text="@{viewModel.labelAlarm}"
                         android:textColor="@color/colorTxtTitle"
                         android:textSize="@dimen/size_text_all"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/titleNameAlarm" />
+                        app:layout_constraintTop_toBottomOf="@+id/titleLabelAlarm" />
                 </android.support.constraint.ConstraintLayout>
 
                 <View
