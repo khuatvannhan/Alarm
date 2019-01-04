@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorNTB">#FFFFCC</color>
+    <color name="colorNtbActive">#45A1AE</color>
+    <color name="coloNtbBackGround">#F0F0F0</color>
+    <color name="colorTxtTitle">#45A1AE</color>
+    <color name="colorBackGround">#FAFAFA</color>
+    <color name="colorBr">#E6E6E6</color>
+    <color name="colorPressed">#E5E5E5</color>
+    <color name="colorSelected">#CCCCCC</color>
+    <color name="colortxtRepeat">#86898B</color>
+    <color name="colortxtTitle2">#575A5A</color>
+    <color name="colorRadiobutton">#e75748</color>
+    <drawable name="completedTaskBackground">#CCCCCC</drawable>
+
+    <drawable name="touchFeedback">#CFD8DC</drawable>
+    <!-- Switch color -->
+    <color name="colorDisableForground">#86898B</color>
+    <color name="colorDisableThumb">#CCCCCC</color>
+    <color name="colorEnableThumb">#45A1AE</color>
 </resources>
