@@ -69,6 +69,10 @@ class StopWatchFragment : Fragment(), StopWatchView {
         txtLap.isEnabled = false
         txtReset.isEnabled = false
         txtStopWatch.text = resources.getString(R.string.formatTimer)
+        btStart.isPlayed = false
+        btStart.isClickable = false
+        btStart.startAnimation()
+
         if (transition != null) {
             layoutListLap.layoutTransition = null
             layoutListLap.removeAllViews()
