@@ -16,8 +16,8 @@ class StopWatchFragment : Fragment(), StopWatchView {
     private lateinit var presenter: StopWatchPresenter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_stop_watch, container, false)
@@ -35,10 +35,21 @@ class StopWatchFragment : Fragment(), StopWatchView {
 
     private fun initData() {
         btStart.setColor(resources.getColor(R.color.colorWhite))
+        presenter = StopWatchPresenter(this)
     }
 
     private fun initEvent() {
+        btStart.setOnControlStatusChangeListener { view, state ->
+            if (state) {
+                presenter.startWatch()
+            } else {
+                presenter.stopWatch()
+            }
+        }
+    }
 
+    override fun setTimer(currentTime: String) {
+        txtStopWatch.text = currentTime
     }
 
     companion object {

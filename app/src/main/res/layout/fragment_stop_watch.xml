@@ -7,36 +7,41 @@
     android:padding="8dp"
     tools:context="com.nhankv.stopwatch.StopWatchFragment">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/txtStopWatch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/colorBlue"
+        android:textSize="@dimen/txt_size_large2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.nhankv.customview.TextViewCustom
-            android:id="@+id/txtStopWatch"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
-            android:background="@color/colorWhite" />
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="8dp"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:layout_marginEnd="8dp"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:orientation="vertical"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent">-->
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:visibility="gone" />
-    </LinearLayout>
+    <!--<androidx.recyclerview.widget.RecyclerView-->
+    <!--android:id="@+id/listView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:visibility="gone" />-->
+    <!--</LinearLayout>-->
 
     <LinearLayout
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/border_cycler_blue"
         android:gravity="center"
@@ -47,8 +52,8 @@
 
         <jp.co.recruit_lifestyle.android.widget.PlayPauseButton
             android:id="@+id/btStart"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
     </LinearLayout>
 
 
