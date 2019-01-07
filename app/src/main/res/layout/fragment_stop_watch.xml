@@ -11,50 +11,87 @@
         android:id="@+id/txtStopWatch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:text="@string/formatTimer"
         android:textColor="@color/colorBlue"
         android:textSize="@dimen/txt_size_large2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--<LinearLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginStart="8dp"-->
-    <!--android:layout_marginTop="8dp"-->
-    <!--android:layout_marginEnd="8dp"-->
-    <!--android:layout_marginBottom="8dp"-->
-    <!--android:orientation="vertical"-->
-    <!--app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent">-->
-
-    <!--<androidx.recyclerview.widget.RecyclerView-->
-    <!--android:id="@+id/listView"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginTop="20dp"-->
-    <!--android:visibility="gone" />-->
-    <!--</LinearLayout>-->
-
-    <LinearLayout
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+    <ScrollView
+        android:id="@+id/lapView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/border_cycler_blue"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtStopWatch">
+
+        <LinearLayout
+            android:id="@+id/layoutListLap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <jp.co.recruit_lifestyle.android.widget.PlayPauseButton
-            android:id="@+id/btStart"
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
-    </LinearLayout>
+        <com.nhankv.customview.TextViewCustom
+            android:id="@+id/txtReset"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@string/reset"
+            android:textColor="@color/colorBlue"
+            android:textSize="@dimen/txt_size_header"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/border_cycler_blue"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <jp.co.recruit_lifestyle.android.widget.PlayPauseButton
+                android:id="@+id/btStart"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+        </LinearLayout>
+
+        <com.nhankv.customview.TextViewCustom
+            android:id="@+id/txtLap"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@string/lap"
+            android:textColor="@color/colorBlue"
+            android:textSize="@dimen/txt_size_header"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

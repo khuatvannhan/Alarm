@@ -1,14 +1,13 @@
 package com.nhankv.stopwatch
 
+import com.nhankv.utils.TimeFormatUtil
 import com.nhankv.utils.TimeFormatUtil.toDisplayString
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 import java.util.concurrent.TimeUnit
-import javax.xml.datatype.DatatypeConstants.SECONDS
 
 
 class StopWatchPresenter(private var stopWatchView: StopWatchView?) {
@@ -55,5 +54,25 @@ class StopWatchPresenter(private var stopWatchView: StopWatchView?) {
 
             }
         }
+    }
+
+    fun resetStopWatch() {
+        stopWatch()
+        currentTime = 0
+        lapTime = 0
+        lapCounter = 0
+        stopWatchView!!.resetView()
+    }
+
+    fun lapStopWatch() {
+        lapCounter++
+        if (lapCounter < 10) {
+            stopWatchView!!.setViewLap(lapCounter, String.format("# 0%d: %s", lapCounter,
+                    TimeFormatUtil.toDisplayString(lapTime)))
+        } else {
+            stopWatchView!!.setViewLap(lapCounter, String.format("# %d: %s", lapCounter,
+                    TimeFormatUtil.toDisplayString(lapTime)))
+        }
+        lapTime = 0
     }
 }
