@@ -17,8 +17,8 @@ class TimerFragment : Fragment(), TimerView, TimerNumberAdapter.ItemClickListene
     private var adapter: TimerNumberAdapter? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_timer, container, false)
@@ -49,10 +49,24 @@ class TimerFragment : Fragment(), TimerView, TimerNumberAdapter.ItemClickListene
 
     override fun setListNumber(listNumber: MutableList<String>) {
         adapter!!.setData(listNumber)
+        (list.layoutManager as GridLayoutManager).spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                if (position == listNumber.size - 1) {
+                    return 3
+                }
+                return 1
+            }
+        }
+    }
+
+    override fun setTxtTimer(hour: String, minute: String, second: String) {
+        txtHours.text = hour
+        txtMinutes.text = minute
+        txtSeconds.text = second
     }
 
     override fun onItemClick(txtNumber: String) {
-
+        presenter.onItemClick(txtNumber)
     }
 
     override fun onDestroy() {

@@ -3,6 +3,7 @@ package com.nhankv.timer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +20,7 @@ class TimerNumberAdapter(private val inflater: LayoutInflater,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.txtNumber.text = listItem[position]
+        holder.btNumber.text = listItem[position]
     }
 
     override fun getItemCount(): Int {
@@ -38,15 +39,14 @@ class TimerNumberAdapter(private val inflater: LayoutInflater,
 
     inner class ViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView),
             View.OnClickListener {
-        private val viewParent: LinearLayout = itemView.findViewById(R.id.viewParent)
-        internal val txtNumber: TextView = itemView.findViewById(R.id.txtNumber)
+        internal val btNumber: Button = itemView.findViewById(R.id.btNumber)
 
         init {
-            viewParent.setOnClickListener(this)
+            btNumber.setOnClickListener(this)
         }
 
         override fun onClick(v: View?) {
-            itemListener.onItemClick(txtNumber.text.toString())
+            itemListener.onItemClick(btNumber.text.toString())
         }
     }
 
