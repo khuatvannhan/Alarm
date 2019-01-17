@@ -75,4 +75,8 @@ class StopWatchPresenter(private var stopWatchView: StopWatchView?) {
         }
         lapTime = 0
     }
+
+    fun onDestroy() {
+        stopWatchView = null
+    }
 }
