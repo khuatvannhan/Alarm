@@ -38,18 +38,21 @@ class TimerFragment : Fragment(), TimerView, TimerNumberAdapter.ItemClickListene
     private fun initData() {
         presenter = TimerPresenter(this)
         adapter = TimerNumberAdapter(LayoutInflater.from(context), arrayListOf(), this)
-        list.layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
-        list.adapter = adapter
+        listViewNumber.layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
+        listViewNumber.adapter = adapter
         presenter.start()
+        btStart.setColor(resources.getColor(R.color.colorWhite))
     }
 
     private fun initEvent() {
-
+        imgClear.setOnClickListener {
+            presenter.clearTimer()
+        }
     }
 
     override fun setListNumber(listNumber: MutableList<String>) {
         adapter!!.setData(listNumber)
-        (list.layoutManager as GridLayoutManager).spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+        (listViewNumber.layoutManager as GridLayoutManager).spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 if (position == listNumber.size - 1) {
                     return 3
@@ -63,6 +66,18 @@ class TimerFragment : Fragment(), TimerView, TimerNumberAdapter.ItemClickListene
         txtHours.text = hour
         txtMinutes.text = minute
         txtSeconds.text = second
+    }
+
+    override fun showBtStartTimer() {
+        if (!llBtStart.isShown) {
+            llBtStart.visibility = View.VISIBLE
+        }
+    }
+
+    override fun hideBtStartTimer() {
+        if (llBtStart.isShown) {
+            llBtStart.visibility = View.GONE
+        }
     }
 
     override fun onItemClick(txtNumber: String) {
